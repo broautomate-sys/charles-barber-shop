@@ -1,18 +1,41 @@
-# Charles Barber Shop — organized project
+# Charles Barber Shop Mannheim
 
-Static vanilla HTML/CSS/JS project reconstructed from the supplied single-file HTML export.
+Organized local project extracted from the supplied single-file HTML website.
 
-## Structure
+## Project structure
 
-- `index.html` — page markup and content
-- `assets/css/styles.css` — extracted page styles
-- `assets/js/app.js` — extracted inline JavaScript
-- `assets/images/` — local copies of every embedded base64 image found in the source
-- `assets/data/schema.json` — extracted Schema.org JSON-LD
-- `assets/data/images-manifest.json` — image inventory with dimensions and hashes
+```text
+charles-barber-shop-project/
+├── index.html                 # Website entry point
+├── README.md                  # Project notes and run instructions
+├── original/
+│   └── source.html            # Untouched uploaded source
+└── assets/
+    ├── css/
+    │   └── styles.css         # Extracted CSS, kept in original cascade order
+    ├── js/
+    │   ├── inline-01.js       # Extracted inline scripts in source order
+    │   └── ...
+    └── images/
+        ├── image-001.png      # Extracted embedded images
+        ├── ...
+        └── manifest.json     # Image dimensions, format, and hashes
+```
 
-## Run
+## Run locally
 
-Open `index.html` directly in a browser, or serve this folder with any static web server.
+Open `index.html` in a modern browser, or serve this folder with a local HTTP server:
 
-The original page uses Google Fonts and Lenis from CDNs; those references are intentionally preserved in `index.html`.
+```bash
+python -m http.server 8000
+```
+
+Then visit http://localhost:8000.
+
+## Notes
+
+- The original HTML is preserved in `original/source.html`.
+- Embedded base64 raster images were extracted into `assets/images/` and references in the working HTML were rewritten to local paths.
+- Repeated identical image payloads are stored once; `manifest.json` records the number of occurrences and unique files.
+- The site still references Google Fonts and external destinations (such as Google Maps, WhatsApp, and social profiles), so those features may require an internet connection.
+- No visual redesign was applied. CSS blocks and JavaScript blocks were separated while preserving their source order.
