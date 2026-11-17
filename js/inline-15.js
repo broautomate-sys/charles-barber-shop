@@ -1,0 +1,5 @@
+
+/* Safety net: if the main script above stopped early, still start the hero animation, section reveals and menu */
+setTimeout(function(){if(window.__mainOK)return;try{var hero=document.getElementById('home');if(hero){hero.classList.add('play');var on=true;addEventListener('scroll',function(){var hh=hero.offsetHeight||innerHeight,v=1-Math.min(Math.max(scrollY,0),hh)/hh;if(v>=.35&&!on){on=true;void hero.offsetWidth;hero.classList.add('play')}else if(v<.25&&on){on=false;hero.classList.remove('play')}},{passive:true})}
+document.documentElement.classList.add('anim');var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting)x.target.classList.add('in');else if(x.boundingClientRect.top>0)x.target.classList.remove('in')})},{threshold:.15});document.querySelectorAll('.rv').forEach(function(e){io.observe(e)});
+var n=document.getElementById('nav'),b=document.getElementById('bg');if(n&&b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)})}catch(e){}},1500);

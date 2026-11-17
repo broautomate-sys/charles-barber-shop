@@ -1,0 +1,1 @@
+try{var l=localStorage.getItem('cbs-lang')||'de';document.documentElement.lang=l}catch(e){}
